@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -70,6 +71,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "src/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "gui_test:build:production"
@@ -102,6 +106,37 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "asset": {
+      "projectType": "library",
+      "root": "projects/asset",
+      "sourceRoot": "projects/asset/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/asset/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/asset/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/asset/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/asset/src/test.ts",
+            "tsConfig": "projects/asset/tsconfig.spec.json",
+            "karmaConfig": "projects/asset/karma.conf.js"
           }
         }
       }

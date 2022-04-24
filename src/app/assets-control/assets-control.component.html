@@ -1,0 +1,38 @@
+<div class="assets-control-panel">
+  <div class="header">
+    <h2 class="title"> Assets Control</h2>
+  </div>
+
+  <mat-card class="assets-graph">
+
+  </mat-card>
+
+  <mat-tab-group>
+
+    <mat-tab label="Stocks">
+
+      <asset-card-list [type]="STOCK" >
+
+      </asset-card-list>
+
+    </mat-tab>
+
+    <mat-tab label="FIIs">
+
+      <asset-card-list [type]="FII">
+
+      </asset-card-list>
+
+    </mat-tab>
+
+    <mat-tab label="Tesouro Direto">
+
+    </mat-tab>
+
+    <mat-tab label="Cash">
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+</div>

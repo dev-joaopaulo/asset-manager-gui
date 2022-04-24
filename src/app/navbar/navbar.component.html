@@ -1,0 +1,46 @@
+<mat-sidenav-container fullscrenn>
+
+  <mat-sidenav #start
+  [fixedInViewport]="true"
+  mode="push">
+
+    <mat-nav-list (click)="start.close()">
+
+      <a mat-list-item routerLink="/">
+        <mat-icon>trending_up</mat-icon>
+        <span>Assets Control</span>
+      </a>
+
+      <a mat-list-item routerLink="/brokers">
+        <mat-icon>account_balance</mat-icon>
+        <span>Brokes</span>
+      </a>
+
+
+
+    </mat-nav-list>
+
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+
+    <button mat-icon-button (click)="start.open()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div class="app-name">
+      <h1>Assets Manager</h1>
+    </div>
+
+    <div class="login-button">
+      <button mat-button routerLink="/login">
+        <span>Login</span>
+        <mat-icon>login</mat-icon>
+      </button>
+    </div>
+
+  </mat-toolbar>
+
+  <router-outlet></router-outlet>
+
+</mat-sidenav-container>
