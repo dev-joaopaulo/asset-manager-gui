@@ -1,0 +1,75 @@
+<div [formGroup]="form" class="asset-creation-form">
+
+  <div>
+
+    <mat-form-field>
+
+      <input matInput placeholder="Ticker" formControlName="ticker">
+
+      <mat-error *ngIf="assetTicker.errors?.['minlength']">
+        A minimum length of 5 characters is required.
+      </mat-error>
+
+    </mat-form-field>
+
+  </div>
+
+  <div>
+
+    <mat-form-field>
+      <input matInput placeholder="Asset Name" formControlName="name">
+    </mat-form-field>
+
+  </div>
+  <div class="mat-radio-group">
+
+    <mat-radio-group  formControlName="assetClass">
+
+      <mat-radio-button value="fixed income">
+        Fixed Income
+      </mat-radio-button>
+
+      <mat-radio-button class="mat-radio-button" value="variable income">
+        Variable Income
+      </mat-radio-button>
+
+      <mat-radio-button class="mat-radio-button" value="cash">
+        Cash
+      </mat-radio-button>
+
+    </mat-radio-group>
+
+  </div>
+
+  <div class="mat-radio-group">
+
+    <mat-radio-group  formControlName="type" *ngIf="assetClass.value === 'variable income'">
+
+      <mat-radio-button *ngFor="let incomeType of variableIncomeTypes"  value={{incomeType}}>
+        {{incomeType.toUpperCase()}}
+      </mat-radio-button>
+
+    </mat-radio-group>
+
+    <mat-radio-group  formControlName="type" *ngIf="assetClass.value === 'fixed income'">
+
+      <mat-radio-button *ngFor="let incomeType of fixedIncomeTypes"  value={{incomeType}}>
+        {{incomeType.toUpperCase()}}
+      </mat-radio-button>
+
+    </mat-radio-group>
+
+
+  </div>
+
+  <div class="stepper-buttons">
+
+    <button mat-raised-button color="accent" (click)="onCreateAsset()">
+      Create Asset
+    </button>
+
+  </div>
+
+
+
+</div>

@@ -1,0 +1,35 @@
+<div class="create-asset-panel data-form">
+
+  <h2 class="title">Create New Asset</h2>
+
+  <mat-horizontal-stepper class="mat-elevation-z5"
+                          labelPosition="bottom"
+                          [linear]="true">
+
+    <mat-step >
+
+      <ng-template matStepLabel>Step 1 - Choose Asset Broker</ng-template>
+
+      <create-asset-step1 (step1Event)="addBroker($event)"></create-asset-step1>
+
+      <div class="stepper-buttons">
+
+        <button  mat-raised-button color="primary" matStepperNext>
+          Add Asset Information
+        </button>
+
+      </div>
+
+    </mat-step>
+
+    <mat-step errorMessage="Information invalid">
+
+      <ng-template matStepLabel>Step 2 - Add Asset Information</ng-template>
+
+      <create-asset-step2 (step2Event)="addAssetInformation($event)"></create-asset-step2>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+</div>

@@ -11,8 +11,16 @@ export class AssetService {
 
   constructor(private http: HttpClient) { }
 
+  assetsUrl: string = 'http://localhost:8080/api/v1/assets/';
+  getAssetsUrl: string = 'http://localhost:8080/api/v1/assets/get-all-assets/';
+
   getAssets():Observable<Asset[]>{
-    return this.http.get<Asset[]>('http://localhost:8080/api/v1/assets/get-all-assets/').pipe(map(response => response.sort()));
+    return this.http.get<Asset[]>(this.getAssetsUrl)
+              .pipe(map(response => response.sort()));
+  }
+
+  postAsset(asset: Asset) {
+    this.http.post<Asset>(this.assetsUrl, asset).subscribe();
   }
 
 }

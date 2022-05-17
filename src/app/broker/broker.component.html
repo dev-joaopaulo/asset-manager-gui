@@ -4,12 +4,35 @@
 
     <h2 class="title">Brokers</h2>
 
-    <button mat-mini-fab routerLink="/add-new-broker">
+    <button mat-mini-fab routerLink="/new-broker">
       <mat-icon class="add-broker-btn">add</mat-icon>
     </button>
 
   </div>
 
+  <div class="broker-card-list">
 
+    <mat-card class="broker-card mat-elevation-z7" *ngFor="let broker of brokers">
+
+      <mat-card-header>
+        <mat-card-title>
+          <h4>{{ broker.name}}</h4>
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <p>{{ broker.description}}</p>
+        <p>Number of assets: {{broker.assetIds.length}}</p>
+      </mat-card-content>
+
+      <mat-card-actions class="broker-actions">
+        <button mat-raised-button color="primary">
+          VIEW ASSETS
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+
+  </div>
 
 </div>

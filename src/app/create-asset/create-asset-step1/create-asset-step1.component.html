@@ -1,0 +1,13 @@
+<div [formGroup]="form" class="choose-broker-form">
+
+  <mat-radio-group formControlName="brokerId">
+
+    <div class="radio-button" *ngFor="let broker of brokers">
+      <mat-radio-button  (change)="onChoose()" value= {{broker.id}}>
+        {{broker.name}}
+      </mat-radio-button>
+    </div>
+
+  </mat-radio-group>
+
+</div>

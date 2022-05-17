@@ -14,6 +14,11 @@ import { BrokerComponent } from './broker/broker.component';
 import { AssetsControlComponent } from './assets-control/assets-control.component';
 import { AssetCardListComponent } from './asset-card-list/asset-card-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CreateBrokerComponent } from './create-broker/create-broker.component';
+import { CreateAssetComponent } from './create-asset/create-asset.component';
+import { CreateAssetStep1Component } from './create-asset/create-asset-step1/create-asset-step1.component';
+import { CreateAssetStep2Component } from './create-asset/create-asset-step2/create-asset-step2.component';
+import { AssetComponent } from './asset/asset.component';
 
 
 
@@ -25,6 +30,11 @@ import { NavbarComponent } from './navbar/navbar.component';
     AssetsControlComponent,
     AssetCardListComponent,
     NavbarComponent,
+    CreateBrokerComponent,
+    CreateAssetComponent,
+    CreateAssetStep1Component,
+    CreateAssetStep2Component,
+    AssetComponent,
   ],
   imports: [
     BrowserModule,
