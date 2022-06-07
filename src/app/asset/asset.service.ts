@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators'
 import { Asset } from './asset';
@@ -9,7 +10,8 @@ import { Asset } from './asset';
 })
 export class AssetService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private router: Router) { }
 
   assetsUrl: string = 'http://localhost:8080/api/v1/assets/';
   getAssetsUrl: string = 'http://localhost:8080/api/v1/assets/get-all-assets/';
@@ -21,6 +23,7 @@ export class AssetService {
 
   postAsset(asset: Asset) {
     this.http.post<Asset>(this.assetsUrl, asset).subscribe();
+    this.router.navigate(['/assets']);
   }
 
 }

@@ -19,20 +19,14 @@ export class CreateAssetStep1Component implements OnInit {
       this.getAllBrokers();
   }
 
-  @Output() step1Event: EventEmitter<FormGroup> = new EventEmitter<FormGroup>();
+  @Output() step1Event: EventEmitter<number> = new EventEmitter<number>();
 
   brokers: Broker[] = [];
 
-  form = this.fb.group({
-    brokerId: ['', Validators.required]
-  })
-
-  onChoose(){
-    this.step1Event.emit(this.form);
-    console.log(this.form.controls['brokerId'].value);
+  onChoose(brokerId: number){
+    this.step1Event.emit(brokerId);
+    console.log(brokerId);
   }
-
-
 
   getAllBrokers(){
     this.brokerService.getBrokers().subscribe(

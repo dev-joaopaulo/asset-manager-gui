@@ -17,8 +17,8 @@ export class CreateAssetComponent implements OnInit {
 
   asset: Asset = new Asset();
 
-  addBroker(form1: FormGroup){
-    this.asset.brokerId = form1.controls['brokerId'].value;
+  addBroker(brokerId: number){
+    this.asset.brokerId = brokerId;
   }
 
   addAssetInformation(form2: FormGroup){
@@ -26,7 +26,6 @@ export class CreateAssetComponent implements OnInit {
     this.asset.name = form2.controls['name'].value;
     this.asset.assetClass = form2.controls['assetClass'].value;
     this.asset.type = form2.controls['type'].value;
-    console.log(this.asset);
     this.assetService.postAsset(this.asset);
   }
 
