@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Broker } from '../broker/Broker';
+import { BrokerService } from '../broker/broker.service';
 
 @Component({
   selector: 'app-create-broker',
@@ -7,9 +10,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateBrokerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+              private brokerService: BrokerService) { }
 
   ngOnInit(): void {
+  }
+
+  broker: Broker = new Broker();
+
+  form = this.fb.group({
+    name: ['', [
+      Validators.required,
+      Validators.minLength(2),
+    ]],
+    description: ['', [
+      Validators.maxLength(30)
+    ]]
+  })
+
+  get brokerName(){
+    return this.form.controls['name'];
+  }
+
+  get brokerDescription(){
+    return this.form.controls['description'];
+  }
+
+  onCreateBroker(){
+    this.broker.name = this.form.controls['name'].value;
+    this.broker.description = this.form.controls['description'].value;
+    this.brokerService.postBroker(this.broker);
+
+
   }
 
 }
