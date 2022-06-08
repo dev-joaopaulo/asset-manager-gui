@@ -26,4 +26,8 @@ export class AssetService {
     this.router.navigate(['/assets']);
   }
 
+  deleteAsset(assetId: string): Observable<any>{
+    return this.http.delete(this.assetsUrl + assetId);
+  }
+
 }

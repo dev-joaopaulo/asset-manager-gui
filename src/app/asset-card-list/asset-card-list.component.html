@@ -1,9 +1,24 @@
-<div *ngFor="let asset of assets">
-  <mat-card class="asset-card" *ngIf="asset.type == type" >
+<body>
+  <div class="asset-card" *ngFor="let asset of assets">
+    <mat-card  *ngIf="asset.type == type" >
 
-    <mat-card-header>
-      <mat-card-title>{{ asset.name}}</mat-card-title>
-    </mat-card-header>
+      <mat-card-header>
+        <mat-card-title>{{ asset.ticker}}</mat-card-title>
+        <mat-card-subtitle>{{asset.name}}</mat-card-subtitle>
+      </mat-card-header>
 
-  </mat-card>
-</div>
+      <mat-card-content>
+        <div class="card-content">
+          <p>Quantity: {{asset.quantity}}</p>
+          <p>Average Price: R${{asset.averagePrice}}</p>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <mat-button-toggle>Edit</mat-button-toggle>
+        <mat-button-toggle (change)="deleteAsset(asset.id)" >Delete</mat-button-toggle>
+      </mat-card-actions>
+
+    </mat-card>
+  </div>
+</body>

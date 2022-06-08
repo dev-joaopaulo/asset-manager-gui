@@ -1,0 +1,21 @@
+.asset-card{
+  flex-basis: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
+
+.card-content{
+  display: flex;
+  justify-content: center;
+}
+
+p{
+  margin-left: 5px;
+}
+
+body{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

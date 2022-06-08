@@ -1,6 +1,6 @@
 export class Asset
 {
-  id: number;
+  id: string;
   assetClass: string;
   type: string;
   name: string;
