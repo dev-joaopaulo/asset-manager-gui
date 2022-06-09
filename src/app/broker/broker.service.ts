@@ -26,6 +26,10 @@ export class BrokerService {
     this.http.post<Broker>(this.brokerUrl, broker).subscribe();
     this.router.navigate(['/brokers'])
   }
+
+  deleteBroker(brokerId: number){
+    return this.http.delete(this.brokerUrl + brokerId);
+  }
 }
 
 
