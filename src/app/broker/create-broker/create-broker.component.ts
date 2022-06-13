@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Broker } from '../broker/Broker';
-import { BrokerService } from '../broker/broker.service';
+import { Broker } from '../Broker';
+import { BrokerService } from '../broker.service';
 
 @Component({
   selector: 'app-create-broker',
@@ -40,8 +40,6 @@ export class CreateBrokerComponent implements OnInit {
     this.broker.name = this.form.controls['name'].value;
     this.broker.description = this.form.controls['description'].value;
     this.brokerService.postBroker(this.broker);
-
-
   }
 
 }

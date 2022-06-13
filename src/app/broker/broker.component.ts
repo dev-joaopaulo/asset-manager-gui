@@ -37,7 +37,10 @@ export class BrokerComponent implements OnInit{
     this.brokerService.getBrokerById(1).subscribe();
   }
 
-  editBroker(broker: Broker){  }
+  editBroker(broker: Broker){
+    this.router.navigate(['/update-broker']);
+    this.brokerService.setBrokerToBeUpdated(broker);
+  }
 
   deleteBroker(brokerId: number){
     this.brokerService.deleteBroker(brokerId).subscribe(

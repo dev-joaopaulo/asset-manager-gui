@@ -1,0 +1,35 @@
+<mat-card>
+  <mat-card-title>Create new Broker</mat-card-title>
+  <div [formGroup] = "form" class="create-broker-form">
+    <mat-card-content>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Broker name" formControlName="name">
+            <mat-error *ngIf="brokerName.errors?.['minlength']">
+              A minimum length of 2 characters is required.
+            </mat-error>
+
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Broker description" formControlName="description">
+            <mat-error *ngIf="brokerDescription.errors?.['maxlength']">
+              A maximum length of 30 characters is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="stepper-buttons">
+          <button mat-raised-button color="accent" (click)="onCreateBroker()">
+            Create Broker
+          </button>
+
+
+        </div>
+
+    </mat-card-content>
+  </div>
+
+</mat-card>
