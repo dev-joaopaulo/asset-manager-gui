@@ -9,8 +9,6 @@ import { Broker } from './Broker';
 })
 export class BrokerService {
 
-  private _brokerToBeUpdated = new BehaviorSubject<Broker>(new Broker());
-
   constructor(private http: HttpClient,
               private router: Router) { }
 
@@ -35,14 +33,6 @@ export class BrokerService {
 
   updateBroker(brokerId: number, broker: Broker){
     return this.http.put<Broker>(this.brokerUrl + broker.id, broker);
-  }
-
-  setBrokerToBeUpdated(broker: Broker){
-    this._brokerToBeUpdated.next(broker);
-  }
-
-  getBrokerToBeUpdated(){
-    return this._brokerToBeUpdated.asObservable();
   }
 
 }

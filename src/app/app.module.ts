@@ -20,6 +20,7 @@ import { CreateAssetStep1Component } from './create-asset/create-asset-step1/cre
 import { CreateAssetStep2Component } from './create-asset/create-asset-step2/create-asset-step2.component';
 import { AssetComponent } from './asset/asset.component';
 import { UpdateBrokerComponent } from './broker/update-broker/update-broker.component';
+import { DeleteBrokerComponent } from './broker/delete-broker/delete-broker.component';
 
 
 
@@ -37,6 +38,7 @@ import { UpdateBrokerComponent } from './broker/update-broker/update-broker.comp
     CreateAssetStep2Component,
     AssetComponent,
     UpdateBrokerComponent,
+    DeleteBrokerComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,35 +1,36 @@
-<mat-card>
-  <mat-card-title>Update Broker {{broker.name}} </mat-card-title>
-  <div [formGroup] = "form" class="create-broker-form">
-    <mat-card-content>
 
-        <div>
-          <mat-form-field>
-            <input matInput placeholder="Broker Name" formControlName="name">
-            <mat-error *ngIf="brokerName.errors?.['minlength']">
-              A minimum length of 2 characters is required.
-            </mat-error>
+  <h2 mat-dialog-title>Update Broker </h2>
 
-          </mat-form-field>
-        </div>
-        <div>
-          <mat-form-field>
-            <input matInput placeholder="Broker description" formControlName="description">
-            <mat-error *ngIf="brokerDescription.errors?.['maxlength']">
-              A maximum length of 30 characters is required.
-            </mat-error>
-          </mat-form-field>
-        </div>
+<div [formGroup] = "form" >
+  <mat-dialog-content class="update-broker-form">
 
-        <div class="stepper-buttons">
-          <button mat-raised-button color="accent" (click)="onUpdateBroker()">
-            Update Broker
-          </button>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Broker Name" formControlName="name">
+          <mat-error *ngIf="brokerName.errors?.['minlength']">
+            A minimum length of 2 characters is required.
+          </mat-error>
 
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Broker description" formControlName="description">
+          <mat-error *ngIf="brokerDescription.errors?.['maxlength']">
+            A maximum length of 30 characters is required.
+          </mat-error>
+        </mat-form-field>
+      </div>
 
-        </div>
+      <mat-dialog-actions class="stepper-buttons">
+        <button mat-raised-button color="accent" (click)="close()">
+          Close
+        </button>
+        <button mat-raised-button color="primary" (click)="save()">
+          Update Broker
+        </button>
+      </mat-dialog-actions>
 
-    </mat-card-content>
-  </div>
+  </mat-dialog-content>
+</div>
 
-</mat-card>

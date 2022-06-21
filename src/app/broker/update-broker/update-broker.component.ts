@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Broker } from '../Broker';
-import { BrokerService } from '../broker.service';
 
 @Component({
   selector: 'app-update-broker',
@@ -11,34 +10,24 @@ import { BrokerService } from '../broker.service';
 })
 export class UpdateBrokerComponent implements OnInit {
 
-  broker: Broker = new Broker;
-
   constructor(private fb: FormBuilder,
-    private brokerService: BrokerService,
-    private router: Router) {
-    this.brokerService.getBrokerToBeUpdated().subscribe(
-      broker => this.broker = broker
-    );
+    @Inject(MAT_DIALOG_DATA) private brokerToBeUpdated: Broker,
+    private dialogRef: MatDialogRef<UpdateBrokerComponent>) {
   }
 
   ngOnInit() {
-    this.setFormBrokerName(this.broker.name);
-    this.setFormBrokerDescription(this.broker.description);
   }
 
   form = this.fb.group({
-    name: ['', [
+    name: [this.brokerToBeUpdated.name, [
     Validators.required,
     Validators.minLength(2),
     ]],
-    description: ['', [
+    description: [this.brokerToBeUpdated.description, [
     Validators.maxLength(30)
-    ]]
+    ]],
+    id: [this.brokerToBeUpdated.id, Validators.required]
   })
-
-  get brokerName(){
-    return this.form.controls['name'];
-  }
 
   setFormBrokerName(brokerName: string){
     this.form.controls['name'].setValue(brokerName);
@@ -48,16 +37,40 @@ export class UpdateBrokerComponent implements OnInit {
     this.form.controls['description'].setValue(brokerDescription);
   }
 
+  get brokerName(){
+    return this.form.controls['name'];
+  }
+
   get brokerDescription(){
     return this.form.controls['description'];
   }
 
-  onUpdateBroker(){
-    this.broker.name = this.form.controls['name'].value;
-    this.broker.description = this.form.controls['description'].value;
-    this.brokerService.updateBroker(this.broker.id, this.broker).subscribe(
-      data => this.router.navigate(['/brokers'])
-    );
+  close(){
+    this.dialogRef.close();
   }
+
+  save(){
+    if(this.form.valid){
+      this.dialogRef.close(this.form.value);
+    }
+  }
+
+}
+
+//__________________________________________________________________\\
+
+export function openUpdateBrokerDialog(dialog: MatDialog, broker: Broker){
+
+  const config = new MatDialogConfig();
+
+  config.disableClose = true;
+  config.autoFocus = true;
+  config.data = {
+    ...broker
+  };
+
+  const dialogRef = dialog.open(UpdateBrokerComponent, config);
+
+  return dialogRef.afterClosed();
 
 }

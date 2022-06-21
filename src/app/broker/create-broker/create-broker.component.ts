@@ -39,7 +39,9 @@ export class CreateBrokerComponent implements OnInit {
   onCreateBroker(){
     this.broker.name = this.form.controls['name'].value;
     this.broker.description = this.form.controls['description'].value;
-    this.brokerService.postBroker(this.broker);
+    if(this.form.valid){
+      this.brokerService.postBroker(this.broker);
+    }
   }
 
 }
